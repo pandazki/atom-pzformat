@@ -3,7 +3,7 @@
   'atom-text-editor': [
     {
       'label': 'Toggle pzformat'
-      'command': 'pzformat:toggle'
+      'command': 'pzformat:format'
     }
   ]
 'menu': [
@@ -13,8 +13,8 @@
       'label': 'pzformat'
       'submenu': [
         {
-          'label': 'Toggle'
-          'command': 'pzformat:toggle'
+          'label': 'Format'
+          'command': 'pzformat:format'
         }
       ]
     ]

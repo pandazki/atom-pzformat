@@ -6,7 +6,7 @@
   "keywords": [
   ],
   "activationCommands": {
-    "atom-workspace": "pzformat:toggle"
+    "atom-text-editor": "pzformat:format"
   },
   "repository": "https://github.com/atom/pzformat",
   "license": "MIT",

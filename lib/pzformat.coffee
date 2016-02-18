@@ -1,33 +1,18 @@
-PzformatView = require './pzformat-view'
 {CompositeDisposable} = require 'atom'
+{vsprintf} = require './sprintf'
 
 module.exports = Pzformat =
-  pzformatView: null
-  modalPanel: null
-  subscriptions: null
 
   activate: (state) ->
-    @pzformatView = new PzformatView(state.pzformatViewState)
-    @modalPanel = atom.workspace.addModalPanel(item: @pzformatView.getElement(), visible: false)
+    atom.commands.add 'atom-text-editor',
+      'pzformat:format': (event) ->
+        saparator = /[,，;]/g
+        atom.commands.dispatch(atom.views.getView(atom.workspace.getActiveTextEditor()), 'editor:split-selections-into-lines')
+        selections = @getModel().getSelections()
 
-    # Events subscribed to in atom's system can be easily cleaned up with a CompositeDisposable
-    @subscriptions = new CompositeDisposable
-
-    # Register command that toggles this view
-    @subscriptions.add atom.commands.add 'atom-workspace', 'pzformat:toggle': => @toggle()
-
-  deactivate: ->
-    @modalPanel.destroy()
-    @subscriptions.dispose()
-    @pzformatView.destroy()
-
-  serialize: ->
-    pzformatViewState: @pzformatView.serialize()
-
-  toggle: ->
-    console.log 'Pzformat was toggled!'
-
-    if @modalPanel.isVisible()
-      @modalPanel.hide()
-    else
-      @modalPanel.show()
+        formatStr = atom.clipboard.read()
+        for selection in selections
+          if selection.isEmpty()
+            continue
+          args = selection.getText().replace(saparator, ' ').trim().split(/\s+/g)
+          selection.insertText(vsprintf(formatStr, args))

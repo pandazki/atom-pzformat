@@ -1,5 +1,19 @@
 # pzformat package
 
-A short description of your package.
+A format utility base on the [sprintf.js](https://github.com/alexei/sprintf.js).
 
-![A screenshot of your package](https://f.cloud.github.com/assets/69169/2290250/c35d867a-a017-11e3-86be-cd7c5bf3ff9b.gif)
+# Usage
+## 1. Copy or cut your format string.(Just put it into your clipboard)
+eg.
+> INSERT INTO Persons (id, name, gender) VALUES (%s, %s, %s);
+
+## 2. Select all data which you want to format.
+eg.
+> 1 Jack male
+
+> 2 Mary female
+
+> 3 Tom male
+
+## 3. Press [<code>cmd+shift+o</code>,<code>cmd+shift+f</code>]
+All done.
