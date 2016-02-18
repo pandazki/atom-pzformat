@@ -1,14 +1,14 @@
 {
   "name": "pzformat",
   "main": "./lib/pzformat",
-  "version": "0.0.0",
-  "description": "A short description of your package",
+  "version": "0.1.0",
+  "description": "A format utility base on the sprintf.js",
   "keywords": [
   ],
   "activationCommands": {
     "atom-text-editor": "pzformat:format"
   },
-  "repository": "https://github.com/atom/pzformat",
+  "repository": "https://github.com/pandazki/atom-pzformat",
   "license": "MIT",
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
